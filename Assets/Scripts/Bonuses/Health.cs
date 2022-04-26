@@ -1,18 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // Heal
+    public int power = 30;
 
-    // Update is called once per frame
-    void Update()
+    // On player enter
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (!other.CompareTag("Player"))
+            return;
+
+        if (other.GetComponent(nameof(Status)) is Status player)
+        {
+            player.Heal(power);
+            Destroy(gameObject);
+        }
     }
 }
