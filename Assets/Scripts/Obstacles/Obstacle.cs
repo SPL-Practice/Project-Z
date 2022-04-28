@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+namespace Obstacles
 {
-    // Damage
-    public int power = 30;
-
-    // On player enter
-    private void OnCollisionEnter2D(Collision2D collision)
+    public class Obstacle : MonoBehaviour
     {
-        GameObject other = collision.gameObject;
+        // Damage
+        public int power = 30;
 
-        if (!other.CompareTag("Player"))
-            return;
-
-        if (other.GetComponent(nameof(Status)) is Status player)
+        // On player enter
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            player.Heal(power);
-            Destroy(gameObject);
+            GameObject other = collision.gameObject;
+
+            if (!other.CompareTag("Player"))
+                return;
+
+            if (other.GetComponent(nameof(Status)) is Status player)
+            {
+                player.Heal(power);
+                Destroy(gameObject);
+            }
         }
     }
 }
