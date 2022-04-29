@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Obstacle
+namespace Obstacles
 {
     [ExecuteAlways]
     public class BezierPath : MonoBehaviour

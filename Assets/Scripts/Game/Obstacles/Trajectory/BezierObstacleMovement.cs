@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Obstacle
+namespace Obstacles
 {
     public class BezierObstacleMovement : MonoBehaviour
     {

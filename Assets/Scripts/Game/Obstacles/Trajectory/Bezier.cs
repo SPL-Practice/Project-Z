@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Obstacle
+namespace Obstacles
 {
     public static class Bezier
     {

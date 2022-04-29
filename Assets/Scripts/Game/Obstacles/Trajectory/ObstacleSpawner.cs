@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Obstacle
+namespace Obstacles
 {
     public class ObstacleSpawner : MonoBehaviour
     {
