@@ -8,5 +8,10 @@ namespace Helpers
         {
             return Convert.ToInt32(value);
         }
+
+        public static ushort ToUShort(this object value)
+        {
+            return Convert.ToUInt16(value);
+        }
     }
 }
