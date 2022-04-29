@@ -6,7 +6,7 @@ namespace Obstacle
 {
     public class PointObstacleMovement : MonoBehaviour
     {
-        [SerializeField] private Point _point;
+        [SerializeField] private PointPath pointPath;
         [SerializeField] private float _speed;
         
         private List<Transform> _points;
@@ -14,15 +14,15 @@ namespace Obstacle
         
         private void Start()
         {
-            _points = _point.GetPoints();
+            _points = pointPath.GetPoints();
         }
 
         private void Update()
         {
-            Movement();
+            Move();
         }
 
-        private void Movement()
+        private void Move()
         {
             transform.position = Vector2.MoveTowards(transform.position,
                 _points[_currentNumberPosition].position, _speed * Time.deltaTime);

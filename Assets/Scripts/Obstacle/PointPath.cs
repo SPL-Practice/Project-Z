@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Obstacle
 {
     [ExecuteAlways]
-    public class Point : MonoBehaviour
+    public class PointPath : MonoBehaviour
     {
         private List<Transform> _points;
 

@@ -1,39 +1,33 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Obstacle
 {
-    [ExecuteAlways]
     public class BezierObstacleMovement : MonoBehaviour
     {
-        public Transform _point0;
-        public Transform _point1;
-        public Transform _point2;
-        public Transform _point3;
-
-        [SerializeField] [Range(0,1)] private float t;
-
-        private void Update()
-        {
-            transform.position = Bezier.GetPoint(_point0.position, _point1.position, _point2.position, _point3.position, t);
-        }
+        [SerializeField] private BezierPath _bezierPath;
         
-        private void OnDrawGizmos() {
+        private List<Transform> _points;
+        private float _currentTime;
+        private readonly float _time = 5;
 
-            var segmentsNumber = 20;
-            var previousPoint = _point0.position;
+        private void Start()
+        {
+            _points = _bezierPath.GetPoints();
+        }
 
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(_point0.position, _point1.position);
-            Gizmos.DrawLine(_point2.position, _point3.position);
-            Gizmos.color = Color.red;
-            
-            for (var i = 0; i < segmentsNumber + 1; i++) {
-                var parameter = (float)i / segmentsNumber;
-                Vector3 point = Bezier.GetPoint(_point0.position, _point1.position, _point2.position, _point3.position, parameter);
-                Gizmos.DrawLine(previousPoint, point);
-                previousPoint = point;
-            }
+        private void FixedUpdate()
+        {
+            Move();
+        }
 
+        private void Move()
+        {
+            _currentTime += Time.fixedDeltaTime;
+            transform.position = Bezier.GetPoint(_points[0].position, 
+                                                        _points[1].position, 
+                                                        _points[2].position, 
+                                                        _points[3].position, _currentTime / _time);
         }
     }
 }
