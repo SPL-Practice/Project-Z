@@ -1,24 +1,22 @@
 ﻿using UnityEngine;
 
-namespace Obstacles
+namespace Obstacle
 {
     [ExecuteAlways]
-    public class BezierTest : MonoBehaviour
+    public class BezierObstacleMovement : MonoBehaviour
     {
         public Transform _point0;
         public Transform _point1;
         public Transform _point2;
         public Transform _point3;
 
-        [Range(0,1)]
-        public float t;
+        [SerializeField] [Range(0,1)] private float t;
 
         private void Update()
         {
             transform.position = Bezier.GetPoint(_point0.position, _point1.position, _point2.position, _point3.position, t);
         }
-
-
+        
         private void OnDrawGizmos() {
 
             var segmentsNumber = 20;
