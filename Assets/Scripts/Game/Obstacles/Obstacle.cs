@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : MonoBehaviour, IWeak
 {
     public int health = 100;
-    public int power = 30;
+    public ushort power = 30;
 
     // On player collide
     private void OnCollisionEnter2D(Collision2D collision)
@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-    public void Damage(in ushort value)
+    public void Hit(ushort value)
     {
         health -= value;
         if (health <= 0)

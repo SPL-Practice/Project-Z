@@ -4,8 +4,7 @@ public class Straight : MonoBehaviour
 {
     #region Missile Attributes
     public Vector2 direction = new Vector2(0, 1);
-    public float speed = 5f;
-    public ushort power = 10;
+    public float speed = 10f;
     #endregion
 
     private Vector2 velocity;
@@ -27,14 +26,5 @@ public class Straight : MonoBehaviour
         pos += velocity * Time.fixedDeltaTime;
 
         transform.position = pos;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject other = collision.gameObject;
-        if (other.GetComponent(nameof(Obstacle)) is Obstacle target)
-        {
-            target.Damage(power);
-        }
     }
 }

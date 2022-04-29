@@ -2,7 +2,7 @@
 
 public class Gun : MonoBehaviour
 {
-    public Straight missile;
+    public Target missile;
 
     public void Unlock()
     {
