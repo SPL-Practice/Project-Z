@@ -3,7 +3,7 @@
 public class Health : MonoBehaviour
 {
     // Heal
-    public int power = 30;
+    public uint power = 30;
 
     // On player enter
     private void OnTriggerEnter2D(Collider2D other)

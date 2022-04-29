@@ -16,7 +16,7 @@ public class BattleSystem : MonoBehaviour
     private const ushort MaxPower = 100;
     #endregion
 
-    private int reload => (15 + 5 * (MaxSpeed - speed)).ToInt();
+    private int reload => (5 + (MaxSpeed - speed)).ToInt();
 
     private void Shoot()
     {
@@ -68,7 +68,6 @@ public class BattleSystem : MonoBehaviour
     {
         if (_timing.TimeTick())
         {
-            SpeedUp(1f);
             Shoot();
         }
     }
