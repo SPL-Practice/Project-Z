@@ -9,7 +9,7 @@ public class ScoreCount : MonoBehaviour
 
     public static int scoreValue = 0;
     public static int highScore;
-    public GameObject HighScore;
+    public Text HighScore;
 
     Text score;
      
@@ -32,6 +32,6 @@ public class ScoreCount : MonoBehaviour
 
     void ShowHigh()
     {
-        HighScore.GetComponent<Text>().text = "HighScore: " + highScore;
+        HighScore.text = "HighScore: " + highScore;
     }
 }
