@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Helpers
 {
@@ -17,6 +18,11 @@ namespace Helpers
         public static ushort ToUShort(this object value)
         {
             return Convert.ToUInt16(value);
+        }
+
+        public static Vector2 To2D(this object value)
+        {
+            return (Vector2)(value);
         }
     }
 }

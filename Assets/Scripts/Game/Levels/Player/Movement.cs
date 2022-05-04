@@ -7,6 +7,18 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Move();
+
+        //ClampMove();
+    }
+
+    // Original Movement
+    private void Move()
+    {
+        float horizont = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 dir = new Vector3(horizont, vertical, 0);
+        transform.Translate(dir.normalized * Time.deltaTime * speed);
     }
 
     // Mobile touch capture
@@ -17,11 +29,32 @@ public class Movement : MonoBehaviour
     }
 
     // Keyboard. For testing
-    private void Move()
-    {
-        float hor = Input.GetAxisRaw("Horizontal");
+    //private void ClampMove()
+    //{
+    //    float horizont = Input.GetAxisRaw("Horizontal");
+    //    float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 dir = new Vector3(hor, 0, 0);
-        transform.Translate(dir.normalized * Time.deltaTime * speed);
-    }
+    //    Vector3 dir = new Vector3(horizont, vertical, 0);
+    //    Vector3 normalization = dir.normalized * Time.deltaTime * speed;
+    //    Vector3 future = transform.position;
+    //    //Screen.height / 720
+    //    //Screen.width / 1280
+
+    //    float x = future.x + normalization.x;
+    //    float y = future.y + normalization.y;
+
+    //    float clampX = 8.25f * Screen.width / 1280;
+    //    float clampY = 4.5f * Screen.height / 720;
+
+    //    Debug.Log(x);
+    //    Debug.Log(y);
+
+    //    Debug.Log(clampX);
+    //    Debug.Log(clampY);
+    //    if (x > -1 * clampX && x < clampX
+    //         && y > -1 * clampY && y < clampY)
+    //    {
+    //        transform.Translate(normalization);
+    //    }
+    //}
 }

@@ -10,20 +10,6 @@ public class Obstacle : MonoBehaviour, IWeak
     public uint hitScore;
     public uint destroyScore;
 
-    // On player collide
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject other = collision.gameObject;
-
-        if (!other.CompareTag("Player"))
-            return;
-
-        if (other.GetComponent(nameof(Status)) is Status player)
-        {
-            player.Hit(power);
-        }
-    }
-
     public void Hit(ushort value)
     {
         health -= value;
