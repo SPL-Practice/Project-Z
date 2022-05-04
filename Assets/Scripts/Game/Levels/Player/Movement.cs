@@ -19,9 +19,10 @@ public class Movement : MonoBehaviour
     // Keyboard. For testing
     private void Move()
     {
-        float hor = Input.GetAxisRaw("Horizontal");
+        float horizont = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 dir = new Vector3(hor, 0, 0);
+        Vector3 dir = new Vector3(horizont, vertical, 0);
         transform.Translate(dir.normalized * Time.deltaTime * speed);
     }
 }

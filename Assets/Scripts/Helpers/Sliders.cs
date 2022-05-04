@@ -11,9 +11,10 @@ namespace Helpers
             return bar.value <= bar.minValue;
         }
 
-        public static void Fill(this Slider bar, uint value)
+        public static bool Fill(this Slider bar, uint value)
         {
             bar.value = Mathf.Min(bar.value + value, bar.maxValue);
+            return bar.value >= bar.maxValue;
         }
     }
 }
