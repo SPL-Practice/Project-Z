@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        //Move();
+        Move();
 
         //ClampMove();
     }
