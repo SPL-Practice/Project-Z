@@ -9,9 +9,14 @@ namespace Obstacles
     {
         [SerializeField] private Vector2 _frequency; 
         [SerializeField] private List<Obstacle> _obstacles;
+        public Score level;
 
         private void Start()
         {
+            foreach (Obstacle obstacle in _obstacles)
+            {
+                obstacle.level = level;
+            }
             StartCoroutine(Spawn());
         }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 983776876889221}
   m_Layer: 0
   m_Name: Asteroid
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,6 +58,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f32040e9a7db7324fba5298c477f18db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  power: 30
+  level: {fileID: 0}
+  hitScore: 25
+  destroyScore: 200
 --- !u!1 &983777101932463
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +77,7 @@ GameObject:
   - component: {fileID: 983777101932459}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

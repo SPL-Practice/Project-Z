@@ -9,14 +9,17 @@ public class Target : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject other = collision.gameObject;
+        GameObject weakPart = collision.gameObject;
 
-        if (!other.CompareTag(enemyTag))
+        if (!weakPart.CompareTag(enemyTag))
             return;
 
-        if (other.GetComponent(toHit) is IWeak target)
+        GameObject weak = weakPart.transform.parent.gameObject;
+
+        if (weak.GetComponent(toHit) is Obstacle target)
         {
             target.Hit(power);
+            Destroy(gameObject);
         }
     }
 }
