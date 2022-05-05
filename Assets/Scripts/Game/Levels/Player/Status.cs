@@ -6,13 +6,18 @@ public class Status : MonoBehaviour, IWeak
 {
     public Slider hp;
 
+    public AudioSource hitSound;
+    public AudioSource healSound;
+
     public void Heal(uint value)
     {
+        healSound.Play();
         hp.Fill(value);
     }
 
     public void Hit(ushort value)
     {
+        hitSound.Play();
         if (hp.Drain(value))
         {
             Defeat();
@@ -22,7 +27,6 @@ public class Status : MonoBehaviour, IWeak
     private void Defeat()
     {
         gameObject.SetActive(false);
-        // Some behaviour...
     }
 
     // On player collide
@@ -37,7 +41,6 @@ public class Status : MonoBehaviour, IWeak
 
         if (parent.GetComponent(nameof(Obstacle)) is Obstacle obstacle)
         {
-            Debug.Log("YES X4");
             Hit(obstacle.power);
         }
     }
