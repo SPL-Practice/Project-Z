@@ -7,8 +7,6 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Move();
-
-        //ClampMove();
     }
 
     // Original Movement

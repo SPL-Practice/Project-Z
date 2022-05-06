@@ -751,6 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 779482318}
   - component: {fileID: 779482319}
+  - component: {fileID: 779482320}
   m_Layer: 0
   m_Name: Level-1-1
   m_TagString: Untagged
@@ -787,7 +788,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScoreLayout: {fileID: 2032745355}
   scoreLayout: {fileID: 370713084}
+  serializer: {fileID: 779482320}
   score: 0
+--- !u!114 &779482320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779482317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13eaea74bce26444f88f872597d07e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: Level-1-1
 --- !u!1 &887631291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,6 +1470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _episodeLength: 100
   _episodeProgress: {fileID: 1848016783}
+  levelScore: {fileID: 779482319}
 --- !u!1 &1360482428
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,37 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class ScoreSerialization : MonoBehaviour
 {
-    
-    public void SaveMode()
+    public string levelName;
+
+    public void SaveMode(ulong score)
     {
+        BinaryFormatter saveForm = new BinaryFormatter();
+        FileStream scoreFile = new FileStream(levelName + ".dat", FileMode.OpenOrCreate);
 
-        ScoreCount scoreForSaving = new ScoreCount();
-
-        BinaryFormatter SaveForm = new BinaryFormatter();
-
-        FileStream sw = new FileStream("Score.dat", FileMode.OpenOrCreate);
-
-        SaveForm.Serialize(sw,scoreForSaving);
-
-        sw.Close();
-    
+        saveForm.Serialize(scoreFile, score);
+        scoreFile.Close();
     }
     
-    public void LoadMode()
+    public ulong LoadMode()
     {
-
-        BinaryFormatter LoadForm = new BinaryFormatter();
-
-        FileStream sr = new FileStream("Score.dat", FileMode.OpenOrCreate);
-
-        ScoreCount scoreForLoad = (ScoreCount)LoadForm.Deserialize(sr);
+        BinaryFormatter loadForm = new BinaryFormatter();
+        FileStream scoreFile = new FileStream(levelName + ".dat", FileMode.OpenOrCreate);
         
-        sr.Close();
-    
+        ulong score = (scoreFile.Length <= 0) ? 0 :
+            (ulong)loadForm.Deserialize(scoreFile);
+        scoreFile.Close();
+        return score;
     }
 }

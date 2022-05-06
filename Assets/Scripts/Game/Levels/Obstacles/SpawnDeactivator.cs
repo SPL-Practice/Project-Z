@@ -11,6 +11,8 @@ public class SpawnDeactivator : MonoBehaviour
     [SerializeField] private ulong _episodeLength = 10;
     [SerializeField] private Slider _episodeProgress;
 
+    public Score levelScore;
+
     internal void Awake()
     {
         _timing = gameObject.AddComponent<TimeSystem>();
@@ -31,7 +33,13 @@ public class SpawnDeactivator : MonoBehaviour
 
         if (_episodeProgress.Fill(1))
         {
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
+            // Transfer to level select menu logic ...
+
+            Debug.Log("Level Complete");
+
+            levelScore.SaveHighScore();
+            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 }
