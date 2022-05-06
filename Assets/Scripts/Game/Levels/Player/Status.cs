@@ -17,6 +17,8 @@ public class Status : MonoBehaviour, IWeak
 
     public void Hit(ushort value)
     {
+        Debug.Log("Player ship hit");
+
         hitSound.Play();
         if (hp.Drain(value))
         {
@@ -26,7 +28,9 @@ public class Status : MonoBehaviour, IWeak
 
     private void Defeat()
     {
-        gameObject.SetActive(false);
+        Debug.Log("Player ship defeated");
+        Debug.Log("You lose...");
+        //gameObject.SetActive(false);
     }
 
     // On player collide

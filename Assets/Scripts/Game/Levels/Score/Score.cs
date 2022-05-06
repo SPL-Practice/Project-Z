@@ -6,6 +6,7 @@ public class Score : MonoBehaviour
 {
     public Text highScoreLayout;
     public Text scoreLayout;
+    public ScoreSerialization serializer;
 
     public ulong score = 0;
     private const ulong Max = ulong.MaxValue;
@@ -21,9 +22,20 @@ public class Score : MonoBehaviour
         scoreLayout.text = score.ToString();
     }
 
-    public void SetHighScore()
+    public void SaveHighScore()
     {
         highScoreLayout.text = scoreLayout.text;
+        serializer.SaveMode(score);
         SetScore(0);
+    }
+
+    public void LoadHighScore()
+    {
+        highScoreLayout.text = serializer.LoadMode().ToString();
+    }
+
+    internal void Awake()
+    {
+        LoadHighScore();
     }
 }
