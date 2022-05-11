@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1748836033659202424}
   - component: {fileID: -3253513144938809548}
   - component: {fileID: 3439700970897317402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e1760745070eb45b4a6ff7ce0e895a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 1}
+  direction: {x: -0.42261827, y: 0.9063078}
   speed: 20
 --- !u!114 &8881934985330705550
 MonoBehaviour:
@@ -156,8 +156,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

@@ -26,19 +26,6 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public void PowerUp(in ushort boost)
-    {
-        if (power >= MaxPower)
-            return;
-
-        power = Mathf.Min(power + boost, MaxPower).ToUShort();
-
-        for (byte i = 0; i < improvements; i++)
-        {
-            guns[i].PowerBoost(power);
-        }
-    }
-
     public void SpeedUp(in float boost)
     {
         if (speed >= MaxSpeed)
@@ -54,7 +41,6 @@ public class BattleSystem : MonoBehaviour
         if (improvements >= guns.Length)
             return;
 
-        guns[improvements].Unlock();
         improvements++;
     }
 

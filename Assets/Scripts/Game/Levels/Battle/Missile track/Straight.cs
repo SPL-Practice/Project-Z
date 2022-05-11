@@ -9,7 +9,7 @@ public class Straight : MonoBehaviour
 
     private Vector2 velocity;
 
-    void Start()
+    void Awake()
     {
         Destroy(gameObject, 2);
     }

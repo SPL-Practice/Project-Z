@@ -6,6 +6,11 @@ namespace Obstacles
     public class ObstacleMovement : MonoBehaviour
     {
         [SerializeField] [Range(0.1f, 5f)] private float _speed;
+        public void Awake()
+        {
+            Destroy(gameObject, 15f / _speed);
+        }
+
         private void FixedUpdate()
         {
             Move();

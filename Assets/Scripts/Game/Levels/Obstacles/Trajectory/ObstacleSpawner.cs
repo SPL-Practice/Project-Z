@@ -7,11 +7,16 @@ namespace Obstacles
 {
     public class ObstacleSpawner : MonoBehaviour
     {
-        [SerializeField] private Vector2 _frequency; 
+        [SerializeField] private Vector2 _frequency;
         [SerializeField] private List<Obstacle> _obstacles;
         public Score level;
 
         private void Start()
+        {
+            PrepareSpawn();
+        }
+
+        protected void PrepareSpawn()
         {
             foreach (Obstacle obstacle in _obstacles)
             {
