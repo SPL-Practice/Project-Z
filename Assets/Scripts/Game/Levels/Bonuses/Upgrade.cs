@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Upgrade : MonoBehaviour
+public class Upgrade : Bonus
 {
     public float speedBoost = 1f;
 
@@ -11,7 +11,7 @@ public class Upgrade : MonoBehaviour
 
         if (other.GetComponentInChildren(typeof(BattleSystem)) is BattleSystem player)
         {
-
+            collectSound.Play();
             player.Modify();
             player.SpeedUp(speedBoost);
 

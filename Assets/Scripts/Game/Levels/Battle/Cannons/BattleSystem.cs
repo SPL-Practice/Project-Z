@@ -10,11 +10,10 @@ public class BattleSystem : MonoBehaviour
     public byte improvements = 1;
 
     public float speed = 6f;
-    public ushort power = 10;
-
     private const float MaxSpeed = 8f;
-    private const ushort MaxPower = 100;
     #endregion
+
+    public AudioSource improveSound;
 
     private int reload => (5 + (MaxSpeed - speed)).ToInt();
 
