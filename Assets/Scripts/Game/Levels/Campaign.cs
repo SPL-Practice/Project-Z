@@ -28,8 +28,6 @@ public class Campaign : MonoBehaviour
         _episodeProgress.maxValue = _episodeLength;
         _episodeProgress.minValue = 0;
         _episodeProgress.value = 0;
-
-        Debug.Log(_episodeLength);
     }
 
     internal void FixedUpdate()
@@ -37,7 +35,6 @@ public class Campaign : MonoBehaviour
         if (!_timing.TimeTick())
             return;
 
-        //Debug.Log(_episodeProgress.value + "/" + _episodeProgress.maxValue);
         if (!_episodeProgress.Fill(1))
             return;
 

@@ -2,8 +2,8 @@
 
 public class Movement : MonoBehaviour
 {
+    #region RigidBody Movement
     public Rigidbody2D body;
-
 
     [Range(0, 0.3f)] [SerializeField] private float smoothing = 0.05f;
     [Range(10, 100f)] [SerializeField] public float speed = 10f;
@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     private Vector3 _velocity = Vector3.zero;
     private float x;
     private float y;
-    
+    #endregion
 
     private void Awake()
     {
@@ -24,14 +24,9 @@ public class Movement : MonoBehaviour
         AxisLooking();
     }
 
-    // Original Movement
-    private void Move()
+    void FixedUpdate()
     {
-        float horizont = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 dir = new Vector3(horizont, vertical, 0);
-        transform.Translate(dir.normalized * Time.deltaTime * speed);
+        ForceMove();
     }
 
     private void AxisLooking()
@@ -42,17 +37,11 @@ public class Movement : MonoBehaviour
 
     private void ForceMove()
     {
-        float delta = Time.fixedDeltaTime;
-        Vector3 targetVelocity = new Vector2
-            (x * delta * speed * 10f, y * delta * speed * 10f);
+        float increment = Time.fixedDeltaTime * speed * 10f;
+        Vector3 targetVelocity = new Vector2(x * increment, y * increment);
 
         body.velocity = Vector3.SmoothDamp
             (body.velocity, targetVelocity, ref _velocity, smoothing);
-    }
-
-    private void FixedUpdate()
-    {
-        ForceMove();
     }
 
     // Mobile touch capture

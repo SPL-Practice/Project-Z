@@ -22,9 +22,7 @@ public class Straight : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 pos = transform.position;
-
         pos += velocity * Time.fixedDeltaTime;
-
         transform.position = pos;
     }
 }

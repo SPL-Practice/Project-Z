@@ -12,12 +12,12 @@ public class Obstacle : MonoBehaviour, IWeak
 
     public AudioSource hitSound;
     public AudioSource destroySound;
-    public Score level;
+    public Score level = null;
 
     public void Hit(ushort value)
     {
         health -= value;
-        level.Scoring(hitScore);
+        level?.Scoring(hitScore);
 
         if (health > 0)
         {
@@ -27,7 +27,7 @@ public class Obstacle : MonoBehaviour, IWeak
 
         enabled = false;
         destroySound.Play();
-        level.Scoring(destroyScore);
+        level?.Scoring(destroyScore);
         Destroy(gameObject, 0.4f);
     }
 }
