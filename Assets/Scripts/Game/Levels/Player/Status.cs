@@ -31,7 +31,7 @@ public class Status : MonoBehaviour, IWeak
         Debug.Log("Player ship defeated");
         Debug.Log("You lose...");
 
-        UnityEditor.EditorApplication.isPlaying = false;
+        GameManager.Exit();
     }
 
     // On player collide
