@@ -50,7 +50,7 @@ public class Campaign : MonoBehaviour
 
         if (nextLevel is null)
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            GameManager.Exit();
         }
         else
         {

@@ -13,7 +13,7 @@ public class Boss : Obstacle
         level?.SaveHighScore();
         Destroy(gameObject, 0.4f);
 
-        UnityEditor.EditorApplication.isPlaying = false;
+        GameManager.Exit();
     }
     #endregion
 }
