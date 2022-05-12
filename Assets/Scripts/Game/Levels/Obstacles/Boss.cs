@@ -10,6 +10,7 @@ public class Boss : Obstacle
 
         destroySound.Play();
         level?.Scoring(destroyScore);
+        level?.SaveHighScore();
         Destroy(gameObject, 0.4f);
 
         UnityEditor.EditorApplication.isPlaying = false;
