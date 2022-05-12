@@ -2,20 +2,17 @@
 
 public class Gun : MonoBehaviour
 {
-    public Target missile;
+    public Straight missile;
+    private Vector2 _direction;
 
-    public void Unlock()
+    private void Awake()
     {
-        gameObject.SetActive(true);
-    }
-
-    public void PowerBoost(in ushort power)
-    {
-        missile.power = power;
+        _direction = (transform.localRotation * Vector2.up).normalized;
     }
 
     public void Shoot()
     {
         Instantiate(missile.gameObject, transform.position, Quaternion.identity);
+        missile.direction = _direction;
     }
 }

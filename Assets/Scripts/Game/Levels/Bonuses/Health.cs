@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : Bonus
 {
     // Heal
     public uint power = 30;
@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
 
         if (other.GetComponent(nameof(Status)) is Status player)
         {
+            collectSound.Play();
             player.Heal(power);
             Destroy(gameObject);
         }

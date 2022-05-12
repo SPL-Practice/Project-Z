@@ -2,21 +2,46 @@
 
 public class Movement : MonoBehaviour
 {
-    public float speed = 10f;
+    #region RigidBody Movement
+    public Rigidbody2D body;
+
+    [Range(0, 0.3f)] [SerializeField] private float smoothing = 0.05f;
+    [Range(10, 100f)] [SerializeField] public float speed = 10f;
+
+    private Vector3 _velocity = Vector3.zero;
+    private float x;
+    private float y;
+    #endregion
+
+    private void Awake()
+    {
+        x = 0f;
+        y = 0f;
+    }
 
     void Update()
     {
-        Move();
+        AxisLooking();
     }
 
-    // Original Movement
-    private void Move()
+    void FixedUpdate()
     {
-        float horizont = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        ForceMove();
+    }
 
-        Vector3 dir = new Vector3(horizont, vertical, 0);
-        transform.Translate(dir.normalized * Time.deltaTime * speed);
+    private void AxisLooking()
+    {
+        x = Input.GetAxisRaw("Horizontal");
+        y = Input.GetAxisRaw("Vertical");
+    }
+
+    private void ForceMove()
+    {
+        float increment = Time.fixedDeltaTime * speed * 10f;
+        Vector3 targetVelocity = new Vector2(x * increment, y * increment);
+
+        body.velocity = Vector3.SmoothDamp
+            (body.velocity, targetVelocity, ref _velocity, smoothing);
     }
 
     // Mobile touch capture
@@ -25,34 +50,4 @@ public class Movement : MonoBehaviour
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         transform.position = new Vector3(pos.x, transform.position.y, transform.position.z);
     }
-
-    // Keyboard. For testing
-    //private void ClampMove()
-    //{
-    //    float horizont = Input.GetAxisRaw("Horizontal");
-    //    float vertical = Input.GetAxisRaw("Vertical");
-
-    //    Vector3 dir = new Vector3(horizont, vertical, 0);
-    //    Vector3 normalization = dir.normalized * Time.deltaTime * speed;
-    //    Vector3 future = transform.position;
-    //    //Screen.height / 720
-    //    //Screen.width / 1280
-
-    //    float x = future.x + normalization.x;
-    //    float y = future.y + normalization.y;
-
-    //    float clampX = 8.25f * Screen.width / 1280;
-    //    float clampY = 4.5f * Screen.height / 720;
-
-    //    Debug.Log(x);
-    //    Debug.Log(y);
-
-    //    Debug.Log(clampX);
-    //    Debug.Log(clampY);
-    //    if (x > -1 * clampX && x < clampX
-    //         && y > -1 * clampY && y < clampY)
-    //    {
-    //        transform.Translate(normalization);
-    //    }
-    //}
 }

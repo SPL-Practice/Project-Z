@@ -10,11 +10,10 @@ public class BattleSystem : MonoBehaviour
     public byte improvements = 1;
 
     public float speed = 6f;
-    public ushort power = 10;
-
     private const float MaxSpeed = 8f;
-    private const ushort MaxPower = 100;
     #endregion
+
+    public AudioSource improveSound;
 
     private int reload => (5 + (MaxSpeed - speed)).ToInt();
 
@@ -23,19 +22,6 @@ public class BattleSystem : MonoBehaviour
         for (byte i = 0; i < improvements; i++)
         {
             guns[i].Shoot();
-        }
-    }
-
-    public void PowerUp(in ushort boost)
-    {
-        if (power >= MaxPower)
-            return;
-
-        power = Mathf.Min(power + boost, MaxPower).ToUShort();
-
-        for (byte i = 0; i < improvements; i++)
-        {
-            guns[i].PowerBoost(power);
         }
     }
 
@@ -54,7 +40,6 @@ public class BattleSystem : MonoBehaviour
         if (improvements >= guns.Length)
             return;
 
-        guns[improvements].Unlock();
         improvements++;
     }
 
