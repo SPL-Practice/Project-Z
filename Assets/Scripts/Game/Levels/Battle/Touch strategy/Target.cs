@@ -16,7 +16,7 @@ public class Target : MonoBehaviour
 
         GameObject weak = weakPart.transform.parent.gameObject;
 
-        if (weak.GetComponent(toHit) is IWeak target)
+        if (weak.GetComponent(typeof(IWeak)) is IWeak target)
         {
             target.Hit(power);
             Destroy(gameObject);

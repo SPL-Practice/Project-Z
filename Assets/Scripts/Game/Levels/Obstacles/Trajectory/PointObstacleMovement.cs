@@ -6,12 +6,12 @@ namespace Obstacles
 {
     public class PointObstacleMovement : MonoBehaviour
     {
-        [SerializeField] private PointPath pointPath;
-        [SerializeField] private float _speed;
-        
-        private List<Transform> _points;
-        private int _currentNumberPosition = 1;
-        
+        [SerializeField] private protected PointPath pointPath;
+        [SerializeField] private protected float _speed;
+
+        private protected List<Transform> _points;
+        private protected int _currentNumberPosition = 1;
+
         private void Start()
         {
             _points = pointPath.GetPoints();
@@ -22,11 +22,20 @@ namespace Obstacles
             Move();
         }
 
-        private void Move()
+        protected virtual void Move()
+        {
+            MoveToPath();
+            IncrementaryMove();
+        }
+
+        private protected void MoveToPath()
         {
             transform.position = Vector2.MoveTowards(transform.position,
                 _points[_currentNumberPosition].position, _speed * Time.deltaTime);
-            
+        }
+
+        private protected virtual void IncrementaryMove()
+        {
             var distanceSquare = (transform.position - _points[_currentNumberPosition].position).sqrMagnitude;
             if (distanceSquare < Math.Pow(0.1f, 2) && _currentNumberPosition != _points.Count - 1)
                 _currentNumberPosition++;

@@ -10,7 +10,7 @@ namespace Obstacles
 
         public List<Transform> GetPoints() => _points;
         
-        private void Start()
+        private void Awake()
         {
             InitializationPoints();
         }

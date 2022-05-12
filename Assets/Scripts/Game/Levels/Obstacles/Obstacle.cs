@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using Helpers;
 
 public class Obstacle : MonoBehaviour, IWeak
 {
     #region Attributes
-    public int health = 100;
+    public Slider hp;
+    public uint health = 100;
     public ushort power = 30;
 
     public uint hitScore;
@@ -14,20 +17,43 @@ public class Obstacle : MonoBehaviour, IWeak
     public AudioSource destroySound;
     public Score level = null;
 
+    internal void OnEnable()
+    {
+        ResetStats();
+    }
+
+    protected void ResetStats()
+    {
+        hp.maxValue = health;
+        hp.value = health;
+    }
+
     public void Hit(ushort value)
     {
-        health -= value;
+        if (Damage(value))
+            Destroy(this);
+    }
+
+    protected bool Damage(ushort value)
+    {
         level?.Scoring(hitScore);
+        bool collapsed = hp.Drain(value);
 
-        if (health > 0)
-        {
+        if (!collapsed)
             hitSound.Play();
-            return;
-        }
 
-        enabled = false;
+        return collapsed;
+    }
+
+    protected virtual void Defeat()
+    {
         destroySound.Play();
         level?.Scoring(destroyScore);
         Destroy(gameObject, 0.4f);
+    }
+
+    protected void OnDestroy()
+    {
+        Defeat();
     }
 }
